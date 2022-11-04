@@ -1,36 +1,50 @@
+* {
+	box-sizing: border-box;
+	transition: all .1s ease-in;
+    margin: 0;
+    padding: 0;
+    font-family: 'Share Tech Mono', monospace;
+    border-radius: 10px;
+}
+
 .bodyContainer{
     display: flex;
    
     justify-content: space-between;
-    height: 100vh;
+    height: 85vh;
     width: 100vw;
     margin: 0 auto;
     font-family: 'Share Tech Mono', monospace;
     background-size: 100%;
     background-color: black;
-    color: white;
-}
-*{
-    margin: 0;
-    padding: 0;
+    color: aquamarine;
 }
 
+img {
+    width: 100%;
+    height: 100%;
+}
 .mainCharacterView{
 
 width: 50%;
 display: flex;
 flex-direction: column;
-justify-content: space-around;
+margin:auto;
 align-items: center;
 }
-.left{
 
-}
-.right{
-    
-}
 
-.nameBox{
+.nameBox,
+.enemyNameBox,
+.playerText,
+.enemyText,
+.playerStats,
+.enemyStats {
+    margin: .6em auto ;
+    background: hsla(0, 0%, 7%, 0.274);
+}
+.nameBox,
+.enemyNameBox{
     border: 1px solid black;
     width: 25vw;
     height: 10vh;
@@ -38,60 +52,139 @@ align-items: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
-    box-shadow: 0px 0px 20px 10px white;
-
+    font-size: 2rem;
+    box-shadow: 0px 0px 20px 10px aquamarine;
+    border-radius: 10px;
 }
 .playerImage{
     border: 1px solidblack;
     width: 30vw;
-    height: 40vh;
-    background-image: url("/images/space_hero.gif");
+    height: 30vh;
+    
     background-size: cover ;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 0px 0px 20px 10px white;
+    box-shadow: 0px 0px 20px 10px aquamarine;
     
 
     
 }
+.playerText,
+.enemyText{
+    border: none;
+    width: 30vw;
+    height: 4vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: .2em;
+    font-size: 1.5em;
+    
+
+}
+
 .playerStats{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px solidblack;
     width: 15vw;
     height: 15vh;
     text-align: center;
-    font-size: 1.5em;
-    box-shadow: 0px 0px 20px 10px white;
+    font-size: 1.5rem;
+    box-shadow: 0px 0px 20px 10px aquamarine;
     border-radius: 2%;
-
+    border-radius: 10px;
 
 }
 .enemyImage{
     border: 1px solidblack;
     width: 30vw;
-    height: 35vh;
-    background-image: url("/images/enemy.gif");
+    height: 30vh;
+    
     background-size: cover ;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 0px 0px 20px 10px white;
-    
+    box-shadow: 0px 0px 20px 10px aquamarine;
+    border-radius: 10px;
 
     
 }
 .enemyStats{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px solidblack;
     width: 15vw;
     height: 15vh;
     text-align: center;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.5em;
-    box-shadow: 0px 0px 20px 10px white;
+    
+    font-size: 1.5rem;
+    box-shadow: 0px 0px 20px 10px aquamarine;
+    border-radius: 10px;
+}
 
+
+/* // Skeleton CSS - this is needed for the basic function and a tiny bit of styling. Id is used for faster styling */
+
+
+
+
+ 
+
+body {
+	
+	background: rgb(15 15 15);
+	
+}
+
+
+
+.button {
+ 
+  padding: 0 20px;
+  margin: 1em 0em;
+  
+ 
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 38px;
+  text-transform: uppercase;
+  
+  border: 2px solid aquamarine;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgb(15, 15, 15, .2);
+color: aquamarine;
+border-color: aquamarine;
+ } 
+
+.button:hover {
+  	background: hsl(160, 100%, 35%) ; 
+  color: black;
+  }
+  
+
+
+
+
+
+ /* // Container  */
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    width: max(8%, 25vw);
+} 
+ 
+h1 {
+    text-align: center;
+    color: aquamarine;
+    height: 30vh;
 }

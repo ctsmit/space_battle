@@ -1,69 +1,176 @@
-// class Ship {
-//    constructor(shipname, hull, firepower, accuracy) {
-//       this.shipname = ''
-//       this.hull = hull
-//       this.firepower = firepower
-//       this.accuracy = accuracy
-//    }
-//    makeHumanShip(shipname, hull, firepower, accuracy) {
-//       const UssAssembly = new HumanShip("USS Assembly", 20, 5, .7)
-//    }
-//    makeAlienShip(shipname, hull, firepower, accuracy) {
-//       const alienShip = new AlienShip("Alien Ship",)
-//    }
-// }
-const alienShips = []
+
+let player = {}
+let alienShips = []
+let currentAlienShip = 0
+let alive = true
+
+const start = document.getElementById("start")
+const fire = document.getElementById("fire")
+const next = document.getElementById("idk")
+const playername = document.querySelector(".nameBox")
+const enemyshipbox = document.querySelector(".enemyNameBox")
+const remaining = document.querySelector("h1")
+const playerHull = document.querySelector(".playerHull")
+const enemyHull = document.querySelector(".enemyHull")
+const enemyFirepower = document.querySelector(".enemyFirepower")
+const enemyAccuracy = document.querySelector(".enemyAccuracy")
+const playerText = document.querySelector(".playerText")
+const enemyText = document.querySelector(".enemyText")
+
+const buttonFire = document.createElement("button")
+const buttonNext = document.createElement("button")
 
 class HumanShip {
-   constructor() {
-      this.shipname = "USS Assembly"
+   constructor(playerName) {
+      this.name = playerName
       this.hull = 20
       this.firepower = 5
-      this.accuracy = .7
+      this.accuracy = 0.7
+      player = this
    }
    attack(target) {
-      // console.log(alienShips)
-      if (Math.random() <=.7) {
-         alienShips[target-1].hull -= this.firepower
-         // console.log(alienShips)
+      if (Math.random() <= 0.7) {
+         alienShips[currentAlienShip].hull -= this.firepower
+         enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
+         playerText.innerText = `${player.name}: direct hit!!`
+      } else {
+         playerText.innerText = `${player.name}: we missed!!!`
       }
    }
 }
 
-class AlienShip {
+class alienDestroyers {
    constructor(shipname) {
-      this.shipName = shipname
+      this.name = shipname
       this.hull = this.randomHull()
       this.firepower = this.randomFirepower()
       this.accuracy = this.randomAccuracy()
       alienShips.push(this)
    }
+
+   attack() {
+      if (Math.random() <= this.accuracy) {
+         player.hull -= this.firepower
+         playerHull.innerText = `HP: ${player.hull}`
+         enemyText.innerText = `${alienShips[currentAlienShip].name}: ytehd dyufe uui!!`
+         remaining.innerText = `You took ${alienShips[currentAlienShip].firepower} damage! Fire Again!`
+      } else {
+         remaining.innerText = "they are still alive. shoot em again!"
+         playerText.innerText = `${player.name}: The Bastards missed!!!`
+         enemyText.innerText = `${alienShips[currentAlienShip].name}: dit!`
+      }
+   }
+
    randomHull() {
-      return Math.floor(Math.random() * 4)+ 3
+      return Math.floor(Math.random() * 4) + 5
    }
+
    randomFirepower() {
-      return Math.floor(Math.random() * 3)+ 2
+      return Math.floor(Math.random() * 3) + 2
    }
+
    randomAccuracy() {
       return (Math.floor(Math.random() * 3) + 6) / 10
    }
-   attack() {
-      if (Math.random() <= this.accuracy) {
-         UssAssembly.hull -= this.firepower
-      }
-   }
 }
 
-let UssAssembly = new HumanShip()
+const game = {
+   startRound: () => {
+      if (alive === true) {
+      } else if (alienShips[currentAlienShip-1].hull <= 0) {
+         return
+      }
+     
+      document.querySelector(".bodyContainer").style.background = game.getRandomColor()
 
-let alienShip1 = new AlienShip("destroyer1")
-// let alienShip2 = new AlienShip("destroyer2")
-// let alienShip3 = new AlienShip("destroyer3")
-// let alienShip4 = new AlienShip("destroyer4")
-// let alienShip5 = new AlienShip("destroyer5")
-// let alienShip6 = new AlienShip("destroyer6")
+      player.attack(alienShips[currentAlienShip])
 
-// console.log(alienShip1)
-// console.log(UssAssembly.hull)
-// console.log(alienMothership)
-UssAssembly.attack(1)
+      if (alienShips[currentAlienShip].hull > 0) {
+         alienShips[currentAlienShip].attack()
+      }
+
+      game.checkDestroy(currentAlienShip)
+   },
+
+   checkDestroy: (target) => {
+      if (alienShips[target].hull <= 0) {
+
+         currentAlienShip++
+         alive = false
+         enemyText.innerText = "dfjasdkhfiuwesdvhniufh!!!!"
+
+         if (currentAlienShip + 1 > alienShips.length) {
+            remaining.innerText = "YOU WIN"
+            alive = false
+            return
+         }
+         remaining.innerText = `enemy down, onto the next!!!!!!!!!!!!!`
+      } else if (player.hull <= 0) {
+         playerText.innerText = "SNAKEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!"
+         remaining.innerText = "YOU ARE DEAD"
+         alive = false
+         return
+      }
+   },
+
+   initalizeGame: (enemyShips = 6, playerName = "player1") => {
+      alienShips = []
+      for (let ships = 1; ships <= enemyShips; ships++) {
+         let alienDestroyer = new alienDestroyers(`Destroyer${ships}`)
+      }
+      let UssAssembly = new HumanShip(playerName)
+      console.log(player, alienShips)
+   },
+   getRandomColor: () => {
+      var letters = "0123456789ABC"
+      var color = "#"
+      for (var i = 0; i < 6; i++) {
+         color += letters[Math.floor(Math.random() * 13)]
+      }
+      return color
+   },
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+start.addEventListener("click", function () {
+   alive = true
+   let playerOne = window.prompt("playername", "USS Assembly")
+   let enemys = window.prompt("number of enemyships", 6)
+   currentAlienShip = 0
+   game.initalizeGame(enemys, playerOne)
+   remaining.innerText = "they're here!!"
+
+   playerHull.innerText = `HP: 20`
+   start.innerText = "RESTART"
+   enemyshipbox.innerText = alienShips[currentAlienShip].name
+   playername.innerText = playerOne
+
+   
+   enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
+   enemyFirepower.innerText = `Atk: ${alienShips[currentAlienShip].firepower}`
+   enemyAccuracy.innerText = `Acc: ${alienShips[currentAlienShip].accuracy}`
+})
+
+fire.addEventListener("click", game.startRound)
+
+next.addEventListener("click", function () {
+   if (alive === true) return
+   remaining.innerText = `Enemy's Remaining: ${alienShips.length - currentAlienShip}`
+   playerText.innerText = ""
+   enemyText.innerText = ""
+   enemyshipbox.innerText = alienShips[currentAlienShip].name
+   enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
+   enemyFirepower.innerText = `Atk: ${alienShips[currentAlienShip].firepower}`
+   enemyAccuracy.innerText = `Acc : ${alienShips[currentAlienShip].accuracy}`
+   alive = true
+   document.querySelector(".bodyContainer").style.background = game.getRandomColor()
+})
+
+
+
+
+
+
+
+
