@@ -36,9 +36,15 @@ class HumanShip {
       if (Math.random() <= 0.7) {
          alienShips[currentAlienShip].hull -= this.firepower
          enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
+         setTimeout(() => {
          playerText.innerText = `${player.name}: direct hit!!`
+         enemyText.innerText = `${alienShips[currentAlienShip].name}: argh!` 
+         }, 1000);
       } else {
+         setTimeout(() => {
          playerText.innerText = `${player.name}: we missed!!!`
+            
+         }, 1500);
       }
    }
 }
@@ -56,12 +62,31 @@ class alienDestroyers {
       if (Math.random() <= this.accuracy) {
          player.hull -= this.firepower
          playerHull.innerText = `HP: ${player.hull}`
+         setTimeout(() => {
          enemyText.innerText = `${alienShips[currentAlienShip].name}: yed dyufe ui!!`
-         remaining.innerText = `You took ${alienShips[currentAlienShip].firepower} damage! Fire Again!`
+            
+         }, 3000);
+         setTimeout(() => {
+            playerText.innerText = `${player.name}: That hurt.`
+               
+            }, 5000);
+        setTimeout(() => {
+             remaining.innerText = `You took ${alienShips[currentAlienShip].firepower} damage! Fire Again!`
+     
+        }, 4000);
       } else {
-         remaining.innerText = "they are still alive. shoot em again!"
+         setTimeout(() => {
          playerText.innerText = `${player.name}: The Bastards missed!!!`
-         enemyText.innerText = `${alienShips[currentAlienShip].name}: dit!`
+            
+         }, 4000);
+         setTimeout(() => {
+          enemyText.innerText = `${alienShips[currentAlienShip].name}: dit!`
+           
+         }, 5000);
+         setTimeout(() => {
+         remaining.innerText = "they are still alive. shoot em again!"
+            
+         }, 4000);
       }
    }
 
@@ -86,7 +111,9 @@ const game = {
       } else if (alienShips[currentAlienShip - 1].hull <= 0) {
          return
       }
-
+      remaining.innerText = "Missile Away!"
+      playerText.innerText = ""
+      enemyText.innerText = ""
       document.querySelector(".bodyContainer").style.background = game.getRandomColor()
 
       player.attack(alienShips[currentAlienShip])
@@ -102,8 +129,11 @@ const game = {
       if (alienShips[target].hull <= 0) {
          currentAlienShip++
          alive = false
+         setTimeout(() => {
          enemyText.innerText = `${alienShips[currentAlienShip].name}: dfjasdkhfiufh!!!!`
-         buttonContainer.appendChild(buttonNext)
+            
+         }, 3000);
+         
 
          if (currentAlienShip + 1 > alienShips.length) {
             remaining.innerText = "YOU WIN"
@@ -112,10 +142,16 @@ const game = {
             alive = false
             return
          }
+         setTimeout(() => {
          remaining.innerText = `enemy down, onto the next!!!!!!!!!!!!!`
+         buttonContainer.appendChild(buttonNext)   
+         }, 5000);
       } else if (player.hull <= 0) {
+         setTimeout(() => {
          playerText.innerText = "SNAKEEEEEEEEEEEEEEEEEE!"
          remaining.innerText = "YOU ARE DEAD"
+            
+         }, 5000);
 
          buttonContainer.removeChild(buttonFire)
          alive = false
