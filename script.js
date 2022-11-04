@@ -1,12 +1,9 @@
-
 let player = {}
 let alienShips = []
 let currentAlienShip = 0
 let alive = true
 
 const start = document.getElementById("start")
-
-
 const playername = document.querySelector(".nameBox")
 const enemyshipbox = document.querySelector(".enemyNameBox")
 const remaining = document.querySelector("h1")
@@ -25,7 +22,7 @@ buttonFire.classList.add("button")
 buttonNext.innerText = "Next Battle"
 buttonNext.classList.add("button")
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class HumanShip {
    constructor(playerName) {
@@ -81,13 +78,15 @@ class alienDestroyers {
    }
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const game = {
    startRound: () => {
       if (alive === true) {
-      } else if (alienShips[currentAlienShip-1].hull <= 0) {
+      } else if (alienShips[currentAlienShip - 1].hull <= 0) {
          return
       }
-     
+
       document.querySelector(".bodyContainer").style.background = game.getRandomColor()
 
       player.attack(alienShips[currentAlienShip])
@@ -101,12 +100,10 @@ const game = {
 
    checkDestroy: (target) => {
       if (alienShips[target].hull <= 0) {
-
          currentAlienShip++
          alive = false
          enemyText.innerText = `${alienShips[currentAlienShip].name}: dfjasdkhfiufh!!!!`
          buttonContainer.appendChild(buttonNext)
-         
 
          if (currentAlienShip + 1 > alienShips.length) {
             remaining.innerText = "YOU WIN"
@@ -119,7 +116,7 @@ const game = {
       } else if (player.hull <= 0) {
          playerText.innerText = "SNAKEEEEEEEEEEEEEEEEEE!"
          remaining.innerText = "YOU ARE DEAD"
-         
+
          buttonContainer.removeChild(buttonFire)
          alive = false
          return
@@ -128,7 +125,7 @@ const game = {
 
    initalizeGame: (enemyShips = 6, playerName = "player1") => {
       alienShips = []
-      
+
       for (let ships = 1; ships <= enemyShips; ships++) {
          let alienDestroyer = new alienDestroyers(`Destroyer${ships}`)
       }
@@ -145,7 +142,7 @@ const game = {
    },
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 start.addEventListener("click", function () {
    alive = true
@@ -162,7 +159,6 @@ start.addEventListener("click", function () {
    playername.innerText = playerOne
    document.querySelector(".bodyContainer").style.background = "black"
    buttonContainer.appendChild(buttonFire)
-   
 
    enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
    enemyFirepower.innerText = `Atk: ${alienShips[currentAlienShip].firepower}`
@@ -181,15 +177,7 @@ buttonNext.addEventListener("click", function () {
    enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
    enemyFirepower.innerText = `Atk: ${alienShips[currentAlienShip].firepower}`
    enemyAccuracy.innerText = `Acc : ${alienShips[currentAlienShip].accuracy}`
-   
+
    buttonContainer.removeChild(buttonNext)
    document.querySelector(".bodyContainer").style.background = game.getRandomColor()
 })
-
-
-
-
-
-
-
-
