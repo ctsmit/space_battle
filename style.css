@@ -36,12 +36,10 @@ align-items: center;
 
 .nameBox,
 .enemyNameBox,
-.playerText,
-.enemyText,
 .playerStats,
 .enemyStats {
     margin: .6em auto ;
-    background: hsla(0, 0%, 7%, 0.274);
+    background: rgb(15, 15, 15, .5);
 }
 .nameBox,
 .enemyNameBox{
@@ -78,7 +76,9 @@ align-items: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: .2em;
+    padding-top: 0;
+    margin-top: -2.3em;
+    margin-bottom: 1em;
     font-size: 1.5em;
     
 

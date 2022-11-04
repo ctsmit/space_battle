@@ -5,8 +5,8 @@ let currentAlienShip = 0
 let alive = true
 
 const start = document.getElementById("start")
-const fire = document.getElementById("fire")
-const next = document.getElementById("idk")
+
+
 const playername = document.querySelector(".nameBox")
 const enemyshipbox = document.querySelector(".enemyNameBox")
 const remaining = document.querySelector("h1")
@@ -17,8 +17,15 @@ const enemyAccuracy = document.querySelector(".enemyAccuracy")
 const playerText = document.querySelector(".playerText")
 const enemyText = document.querySelector(".enemyText")
 
+const buttonContainer = document.querySelector(".buttonContainer")
 const buttonFire = document.createElement("button")
 const buttonNext = document.createElement("button")
+buttonFire.innerText = "Fire"
+buttonFire.classList.add("button")
+buttonNext.innerText = "Next Battle"
+buttonNext.classList.add("button")
+
+
 
 class HumanShip {
    constructor(playerName) {
@@ -52,7 +59,7 @@ class alienDestroyers {
       if (Math.random() <= this.accuracy) {
          player.hull -= this.firepower
          playerHull.innerText = `HP: ${player.hull}`
-         enemyText.innerText = `${alienShips[currentAlienShip].name}: ytehd dyufe uui!!`
+         enemyText.innerText = `${alienShips[currentAlienShip].name}: yed dyufe ui!!`
          remaining.innerText = `You took ${alienShips[currentAlienShip].firepower} damage! Fire Again!`
       } else {
          remaining.innerText = "they are still alive. shoot em again!"
@@ -97,17 +104,23 @@ const game = {
 
          currentAlienShip++
          alive = false
-         enemyText.innerText = "dfjasdkhfiuwesdvhniufh!!!!"
+         enemyText.innerText = `${alienShips[currentAlienShip].name}: dfjasdkhfiufh!!!!`
+         buttonContainer.appendChild(buttonNext)
+         
 
          if (currentAlienShip + 1 > alienShips.length) {
             remaining.innerText = "YOU WIN"
+            buttonContainer.removeChild(buttonNext)
+            buttonContainer.removeChild(buttonFire)
             alive = false
             return
          }
          remaining.innerText = `enemy down, onto the next!!!!!!!!!!!!!`
       } else if (player.hull <= 0) {
-         playerText.innerText = "SNAKEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!"
+         playerText.innerText = "SNAKEEEEEEEEEEEEEEEEEE!"
          remaining.innerText = "YOU ARE DEAD"
+         
+         buttonContainer.removeChild(buttonFire)
          alive = false
          return
       }
@@ -115,6 +128,7 @@ const game = {
 
    initalizeGame: (enemyShips = 6, playerName = "player1") => {
       alienShips = []
+      
       for (let ships = 1; ships <= enemyShips; ships++) {
          let alienDestroyer = new alienDestroyers(`Destroyer${ships}`)
       }
@@ -138,6 +152,7 @@ start.addEventListener("click", function () {
    let playerOne = window.prompt("playername", "USS Assembly")
    let enemys = window.prompt("number of enemyships", 6)
    currentAlienShip = 0
+
    game.initalizeGame(enemys, playerOne)
    remaining.innerText = "they're here!!"
 
@@ -145,17 +160,20 @@ start.addEventListener("click", function () {
    start.innerText = "RESTART"
    enemyshipbox.innerText = alienShips[currentAlienShip].name
    playername.innerText = playerOne
-
+   document.querySelector(".bodyContainer").style.background = "black"
+   buttonContainer.appendChild(buttonFire)
    
+
    enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
    enemyFirepower.innerText = `Atk: ${alienShips[currentAlienShip].firepower}`
    enemyAccuracy.innerText = `Acc: ${alienShips[currentAlienShip].accuracy}`
 })
 
-fire.addEventListener("click", game.startRound)
+buttonFire.addEventListener("click", game.startRound)
 
-next.addEventListener("click", function () {
+buttonNext.addEventListener("click", function () {
    if (alive === true) return
+   alive = true
    remaining.innerText = `Enemy's Remaining: ${alienShips.length - currentAlienShip}`
    playerText.innerText = ""
    enemyText.innerText = ""
@@ -163,7 +181,8 @@ next.addEventListener("click", function () {
    enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
    enemyFirepower.innerText = `Atk: ${alienShips[currentAlienShip].firepower}`
    enemyAccuracy.innerText = `Acc : ${alienShips[currentAlienShip].accuracy}`
-   alive = true
+   
+   buttonContainer.removeChild(buttonNext)
    document.querySelector(".bodyContainer").style.background = game.getRandomColor()
 })
 
