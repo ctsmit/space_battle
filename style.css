@@ -4,10 +4,9 @@
    margin: 0;
    padding: 0;
    font-family: "Share Tech Mono", monospace;
-   
 }
 body {
-   background: #050505 ;
+   background: #050505;
 }
 .bodyContainer {
    display: flex;
@@ -66,7 +65,6 @@ img {
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
-   
 }
 .playerText,
 .enemyText {
@@ -81,6 +79,7 @@ img {
    margin-top: -2.5em;
    margin-bottom: 1em;
    font-size: 1.5em;
+   z-index: 1000;
 }
 
 .playerStats {
@@ -93,7 +92,7 @@ img {
    height: 15vh;
    text-align: center;
    font-size: 1.5rem;
-   
+
    border-radius: 2%;
    border-radius: 10px;
 }
@@ -105,7 +104,7 @@ img {
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
-   
+
    border-radius: 10px;
 }
 .enemyStats {
@@ -119,7 +118,7 @@ img {
    text-align: center;
 
    font-size: 1.5rem;
-   
+
    border-radius: 10px;
 }
 
@@ -143,25 +142,54 @@ img {
    border-color: aquamarine;
 }
 
-/* .button:focus {
-   background: hsl(160, 100%, 35%);
-   color: black;
-} */
-
+.top {
+   pointer-events: none;
+   position: absolute;
+   display: block;
+   bottom: 59%;
+   width: 100%;
+   left: 100%;
+   height: 5px;
+   background: linear-gradient(270deg, transparent, rgb(155, 11, 23) 95%, rgb(255, 255, 255));
+   opacity: 0;
+   z-index: 9000;
+}
+.bottom {
+   pointer-events: none;
+   position: absolute;
+   display: block;
+   bottom: 59%;
+   width: 100%;
+   left: -100%;
+   height: 5px;
+   background: linear-gradient(90deg, transparent, aquamarine 95%, rgb(255, 255, 255));
+   opacity: 0;
+   z-index: 9000;
+}
+.buttonFire:focus .bottom {
+   opacity: 1;
+   left: 100%;
+   transition: 1s;
+}
+.buttonFire:focus .top {
+   opacity: 1;
+   left: -100%;
+   transition: 1s 1s;
+}
 .button:hover,
 .button:focus {
    background: hsl(160, 100%, 15%);
    /* color: black; */
    font-size: 1.2em;
    font-weight: bold;
-   box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%), 0 0 80px hsl(160, 100%, 35%) ;
-   transition-duration: .8s;
-   
+   box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%), 0 0 80px hsl(160, 100%, 35%);
+   transition-duration: 0.8s;
 }
 
 /* // Container  */
 
 .buttonContainer {
+   position: relative;
    display: flex;
    flex-direction: column;
    justify-content: center;

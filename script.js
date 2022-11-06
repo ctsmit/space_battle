@@ -25,9 +25,16 @@ const playerImage = document.querySelector(".playerImage")
 const buttonContainer = document.querySelector(".buttonContainer")
 const buttonFire = document.createElement("button")
 const buttonNext = document.createElement("button")
+const missile = document.createElement("span")
+const alienMissile = document.createElement("span")
 
 buttonFire.innerText = "Fire"
 buttonFire.classList.add("button", "buttonFire")
+alienMissile.classList.add("top")
+missile.classList.add("bottom")
+buttonFire.appendChild(missile)
+buttonFire.appendChild(alienMissile)
+
 buttonNext.innerText = "Next Battle"
 buttonNext.classList.add("buttonNext", "button")
 
@@ -132,6 +139,10 @@ const game = {
 
       if (alienShips[currentAlienShip].hull > 0) {
          alienShips[currentAlienShip].attack()
+      } else {
+         setTimeout(() => {
+            document.activeElement.blur()
+         }, 1000)
       }
       game.checkDestroy(currentAlienShip)
    },
@@ -195,7 +206,7 @@ const game = {
       for (var i = 0; i < 6; i++) {
          color += letters[Math.floor(Math.random() * 8)]
       }
-      return  `linear-gradient(130deg,  ${color}, black 95%)`
+      return `linear-gradient(130deg,  ${color}, black 95%)`
    },
    shake: (target) => {
       target.style.animation = "shake .75s"
