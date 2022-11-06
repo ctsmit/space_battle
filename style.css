@@ -1,13 +1,13 @@
 * {
    box-sizing: border-box;
-   transition: all 0.2s ease-in;
+   transition: all 0.2s ease-out;
    margin: 0;
    padding: 0;
    font-family: "Share Tech Mono", monospace;
-   border-radius: 10px;
+   
 }
 body {
-   background: rgb(15 15 15);
+   background: #050505 ;
 }
 .bodyContainer {
    display: flex;
@@ -17,7 +17,7 @@ body {
    margin: 0 auto;
    font-family: "Share Tech Mono", monospace;
    background-size: 100%;
-   background-color: rgb(6, 6, 6);
+   background: rgb(6, 6, 6);
    color: aquamarine;
    animation: fadeIn 3s;
    animation-iteration-count: infinite;
@@ -26,6 +26,7 @@ body {
 img {
    width: 100%;
    height: 100%;
+   border-radius: 10px;
 }
 .mainCharacterView {
    width: 50%;
@@ -38,9 +39,13 @@ img {
 .nameBox,
 .enemyNameBox,
 .playerStats,
-.enemyStats {
+.enemyStats,
+.enemyImage,
+.playerImage {
    margin: 0.6em auto;
    background: rgb(15, 15, 15, 0.5);
+   box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 20px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%);
+   border-radius: 10px;
 }
 .nameBox,
 .enemyNameBox {
@@ -52,20 +57,16 @@ img {
    justify-content: center;
    align-items: center;
    font-size: 2rem;
-   box-shadow: 0px 0px 20px 10px aquamarine;
    border-radius: 10px;
 }
 .playerImage {
    border: 1px solidblack;
    width: 30vw;
    height: 30vh;
-
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
-   box-shadow: 0px 0px 20px 10px aquamarine;
-
-   animation-iteration-count: 1;
+   
 }
 .playerText,
 .enemyText {
@@ -77,7 +78,7 @@ img {
    justify-content: center;
    align-items: center;
    padding-top: 0;
-   margin-top: -2.3em;
+   margin-top: -2.5em;
    margin-bottom: 1em;
    font-size: 1.5em;
 }
@@ -92,7 +93,7 @@ img {
    height: 15vh;
    text-align: center;
    font-size: 1.5rem;
-   box-shadow: 0px 0px 20px 10px aquamarine;
+   
    border-radius: 2%;
    border-radius: 10px;
 }
@@ -104,10 +105,8 @@ img {
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
-   box-shadow: 0px 0px 20px 10px aquamarine;
+   
    border-radius: 10px;
-
-   animation-iteration-count: 1;
 }
 .enemyStats {
    display: flex;
@@ -120,7 +119,7 @@ img {
    text-align: center;
 
    font-size: 1.5rem;
-   box-shadow: 0px 0px 20px 10px aquamarine;
+   
    border-radius: 10px;
 }
 
@@ -144,16 +143,20 @@ img {
    border-color: aquamarine;
 }
 
-.button:focus {
+/* .button:focus {
    background: hsl(160, 100%, 35%);
    color: black;
-}
+} */
 
-.button:hover {
-   background: hsl(160, 100%, 35%);
-   color: black;
+.button:hover,
+.button:focus {
+   background: hsl(160, 100%, 15%);
+   /* color: black; */
    font-size: 1.2em;
    font-weight: bold;
+   box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%), 0 0 80px hsl(160, 100%, 35%) ;
+   transition-duration: .8s;
+   
 }
 
 /* // Container  */
@@ -179,7 +182,7 @@ h1 {
    }
    25% {
       opacity: 1;
-      background: rgba(238, 6, 6, 0.1);
+      background: rgba(238, 6, 6, 0.5);
    }
    50% {
       opacity: 1;
@@ -187,7 +190,7 @@ h1 {
    }
    75% {
       opacity: 1;
-      background: rgba(238, 6, 6, 0.1);
+      background: rgba(238, 6, 6, 0.4);
    }
    100% {
       opacity: 1;

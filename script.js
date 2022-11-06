@@ -190,12 +190,12 @@ const game = {
       console.log(player, alienShips)
    },
    getRandomColor: () => {
-      var letters = "0123456789ABC"
+      var letters = "01234567"
       var color = "#"
       for (var i = 0; i < 6; i++) {
-         color += letters[Math.floor(Math.random() * 13)]
+         color += letters[Math.floor(Math.random() * 8)]
       }
-      return color
+      return  `linear-gradient(130deg,  ${color}, black 95%)`
    },
    shake: (target) => {
       target.style.animation = "shake .75s"
@@ -223,10 +223,10 @@ start.addEventListener("click", () => {
    playerText.innerText = ""
 
    playerHull.innerText = `HP: 20`
-   start.innerText = "RESTART"
+   start.innerText = "Begin Again?"
    enemyshipbox.innerText = alienShips[currentAlienShip].name
    playername.innerText = playerOne
-   document.querySelector(".bodyContainer").style.background = "black"
+   document.querySelector(".bodyContainer").style.background = game.getRandomColor()
    buttonContainer.appendChild(buttonFire)
 
    enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
