@@ -1,54 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="bodyContainer">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link rel="stylesheet" href="style.css" />
+      <script src="script.js" defer></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+   </head>
+   <body>
+      <div class="bodyContainer">
+         <div class="mainCharacterView left">
+            <div class="nameBox"></div>
+            <div class="playerImage"><img src="images/space_hero.gif" alt="" /></div>
+            <div class="playerText"></div>
+            <div class="playerStats">
+               <div class="playerHull">HP: 20</div>
+               Atk: 5 <br />
+               Acc: 0.7
+            </div>
+         </div>
+         <div class="buttonContainer">
+            <button class="buttonStart button" id="start">Fight</button>
+         </div>
 
-        <div class="mainCharacterView left" >
-                <div class="nameBox"></div>
-                <div class="playerImage"><img src="images/space_hero.gif" alt=""></div>
-                <div class="playerText"></div>
-                <div class="playerStats">
-
-               <div class="playerHull">HP: 20 </div> 
-                Atk: 5 <br>
-                Acc: 0.7 
-                </div>
-
-        </div>
-        <div class="buttonContainer">
-          
-          <button class= "button" id="start">Initiate Game</button>
-          <!-- <button class= "button" id="fire">Fire</button> -->
-          <!-- <button class= "button" id="idk">Next Battle</button> -->
-        </div>
-
-        <div class="mainCharacterView right">
-           
+         <div class="mainCharacterView right">
             <div class="enemyNameBox"></div>
-            <div class="enemyImage"><img src="images/enemy.gif" alt=""></div>
+            <div class="enemyImage"></div>
             <div class="enemyText"></div>
-                <div class="enemyStats">
-                    <div class="enemyHull"></div> 
-                    <div class="enemyFirepower"></div> 
-                    <div class="enemyAccuracy"></div> 
-                </div>
-            
-        </div>
+            <div class="enemyStats">
+               <div class="enemyHull"></div>
+               <div class="enemyFirepower"></div>
+               <div class="enemyAccuracy"></div>
+            </div>
+         </div>
+      </div>
 
-    </div>
-    
-    <h1>Let Us Begin</h1>
-   
-</body>
+      <h1>THEY ARE COMING...</h1>
+   </body>
 </html>
