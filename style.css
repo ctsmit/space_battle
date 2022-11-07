@@ -7,15 +7,17 @@
 }
 body {
    background: #050505;
+   height: 85vh;
 }
 .bodyContainer {
    display: flex;
    justify-content: space-between;
-   height: 85vh;
+   height: 100%;
    width: 100vw;
+
    margin: 0 auto;
    font-family: "Share Tech Mono", monospace;
-   background-size: 100%;
+
    background: rgb(6, 6, 6);
    color: aquamarine;
    animation: fadeIn 3s;
@@ -28,7 +30,6 @@ img {
    border-radius: 10px;
 }
 .mainCharacterView {
-   width: 50%;
    display: flex;
    flex-direction: column;
    margin: auto;
@@ -45,6 +46,7 @@ img {
    background: rgb(15, 15, 15, 0.5);
    box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 20px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%);
    border-radius: 10px;
+   font-size: min(4vw, 4em);
 }
 .nameBox,
 .enemyNameBox {
@@ -55,16 +57,27 @@ img {
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 2rem;
+
    border-radius: 10px;
 }
 .playerImage {
    border: 1px solidblack;
-   width: 30vw;
-   height: 30vh;
+   width: min(35vw, 450px);
+   height: max(35vh, 300px);
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
+}
+.enemyImage {
+   border: 1px solidblack;
+   width: min(35vw, 450px);
+   height: max(35vh, 300px);
+
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+
+   border-radius: 10px;
 }
 .playerText,
 .enemyText {
@@ -75,10 +88,12 @@ img {
    display: flex;
    justify-content: center;
    align-items: center;
-   padding-top: 0;
-   margin-top: -2.5em;
-   margin-bottom: 1em;
-   font-size: 1.5em;
+
+   margin-top: -2.9em;
+
+   margin-right: 15px;
+   margin-left: 15px;
+   font-size: min(4vw, 2rem);
    z-index: 1000;
 }
 
@@ -88,36 +103,23 @@ img {
    justify-content: center;
    align-items: center;
    border: 1px solidblack;
-   width: 15vw;
-   height: 15vh;
+   width: 20vw;
+
    text-align: center;
-   font-size: 1.5rem;
 
    border-radius: 2%;
    border-radius: 10px;
 }
-.enemyImage {
-   border: 1px solidblack;
-   width: 30vw;
-   height: 30vh;
 
-   background-size: cover;
-   background-position: center;
-   background-repeat: no-repeat;
-
-   border-radius: 10px;
-}
 .enemyStats {
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
    border: 1px solidblack;
-   width: 15vw;
-   height: 15vh;
-   text-align: center;
+   width: 20vw;
 
-   font-size: 1.5rem;
+   text-align: center;
 
    border-radius: 10px;
 }
@@ -125,13 +127,12 @@ img {
 /* // Skeleton CSS - this is needed for the basic function and a tiny bit of styling. Id is used for faster styling */
 
 .button {
-   padding: 0 0px;
+   padding: 0.3em 0px;
    margin: 1em 0em;
 
    text-align: center;
-   font-size: 1rem;
+   font-size: max(2.5vw, 1em);
 
-   line-height: 38px;
    text-transform: uppercase;
 
    border: 2px solid aquamarine;
@@ -180,7 +181,7 @@ img {
 .button:focus {
    background: hsl(160, 100%, 15%);
    /* color: black; */
-   font-size: 1.2em;
+   font-size: 3vw;
    font-weight: bold;
    box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%), 0 0 80px hsl(160, 100%, 35%);
    transition-duration: 0.8s;
@@ -194,13 +195,12 @@ img {
    flex-direction: column;
    justify-content: center;
 
-   width: max(8%, 20vw);
+   width: max(8%, 15vw);
 }
 
 h1 {
    text-align: center;
    color: aquamarine;
-   height: 30vh;
 }
 
 /* animations */
