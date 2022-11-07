@@ -97,20 +97,7 @@ img {
    z-index: 1000;
 }
 
-.playerStats {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   border: 1px solidblack;
-   width: 20vw;
-
-   text-align: center;
-
-   border-radius: 2%;
-   border-radius: 10px;
-}
-
+.playerStats,
 .enemyStats {
    display: flex;
    flex-direction: column;
@@ -118,11 +105,14 @@ img {
    align-items: center;
    border: 1px solidblack;
    width: 20vw;
-
+   margin-top: 1.2em;
    text-align: center;
 
+   border-radius: 2%;
    border-radius: 10px;
 }
+
+
 
 /* // Skeleton CSS - this is needed for the basic function and a tiny bit of styling. Id is used for faster styling */
 
@@ -131,7 +121,7 @@ img {
    margin: 1em 0em;
 
    text-align: center;
-   font-size: max(2.5vw, 1em);
+   font-size: max(2.5vw, .8em);
 
    text-transform: uppercase;
 
@@ -181,7 +171,7 @@ img {
 .button:focus {
    background: hsl(160, 100%, 15%);
    /* color: black; */
-   font-size: 3vw;
+   font-size: 4vw;
    font-weight: bold;
    box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%), 0 0 80px hsl(160, 100%, 35%);
    transition-duration: 0.8s;
