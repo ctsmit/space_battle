@@ -8,6 +8,8 @@ const playername = document.querySelector(".nameBox")
 const enemyshipbox = document.querySelector(".enemyNameBox")
 const remaining = document.querySelector("h1")
 const playerHull = document.querySelector(".playerHull")
+const playerFirepower = document.querySelector(".playerFirepower")
+const playerAccuracy = document.querySelector(".playerAccuracy")
 const enemyHull = document.querySelector(".enemyHull")
 const enemyFirepower = document.querySelector(".enemyFirepower")
 const enemyAccuracy = document.querySelector(".enemyAccuracy")
@@ -233,7 +235,8 @@ start.addEventListener("click", () => {
    enemyText.innerText = ""
    playerText.innerText = ""
 
-   playerHull.innerText = `HP: 20`
+   
+
    start.innerText = "Begin Again?"
    enemyshipbox.innerText = alienShips[currentAlienShip].name
    playername.innerText = playerOne
@@ -243,6 +246,9 @@ start.addEventListener("click", () => {
    enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
    enemyFirepower.innerText = `Atk: ${alienShips[currentAlienShip].firepower}`
    enemyAccuracy.innerText = `Acc: ${alienShips[currentAlienShip].accuracy}`
+   playerHull.innerText = `HP: 20`
+   playerFirepower.innerText = `Atk: 5`
+   playerAccuracy.innerText = `Acc: 0.7`
 })
 
 buttonFire.addEventListener("click", game.startRound)
