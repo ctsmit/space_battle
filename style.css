@@ -131,8 +131,6 @@ img {
    background: rgb(15, 15, 15, 0.2);
    color: aquamarine;
    border-color: aquamarine;
-
-   
 }
 
 .top {
@@ -159,37 +157,24 @@ img {
    opacity: 0;
    z-index: 9000;
 }
-.buttonFire:focus .bottom,
-.buttonFire:active .bottom {
+.buttonFire:focus .bottom {
    opacity: 1;
    left: 100%;
    transition: 1s;
 }
-.buttonFire:focus .top,
-.buttonFire:active .top {
+.buttonFire:focus .top {
    opacity: 1;
    left: -100%;
    transition: 1s 1s;
 }
-.button:focus,
-.button:active {
+.button:hover,
+.button:focus {
    background: hsl(160, 100%, 15%);
    /* color: black; */
    font-size: 4vw;
    font-weight: bold;
    box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%), 0 0 80px hsl(160, 100%, 35%);
    transition-duration: 0.8s;
-}
-
-@media (hover: hover) {
-   .button:hover {
-      background: hsl(160, 100%, 15%);
-   /* color: black; */
-   font-size: 4vw;
-   font-weight: bold;
-   box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%), 0 0 80px hsl(160, 100%, 35%);
-   transition-duration: 0.8s;
-   }
 }
 
 /* // Container  */
