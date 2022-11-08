@@ -167,7 +167,6 @@ img {
    left: -100%;
    transition: 1s 1s;
 }
-.button:hover,
 .button:focus {
    background: hsl(160, 100%, 15%);
    /* color: black; */
@@ -175,6 +174,17 @@ img {
    font-weight: bold;
    box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%), 0 0 80px hsl(160, 100%, 35%);
    transition-duration: 0.8s;
+}
+
+@media (hover: hover) {
+   .button:hover {
+      background: hsl(160, 100%, 15%);
+   /* color: black; */
+   font-size: 4vw;
+   font-weight: bold;
+   box-shadow: 0 0 10px hsl(160, 100%, 35%), 0 0 40px hsl(160, 100%, 35%), 0 0 80px hsl(160, 100%, 35%);
+   transition-duration: 0.8s;
+   }
 }
 
 /* // Container  */
