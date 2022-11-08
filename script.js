@@ -32,6 +32,7 @@ const alienMissile = document.createElement("span")
 
 buttonFire.innerText = "Fire"
 buttonFire.classList.add("button", "buttonFire")
+buttonFire.tabIndex = 0
 alienMissile.classList.add("top")
 missile.classList.add("bottom")
 buttonFire.appendChild(missile)
