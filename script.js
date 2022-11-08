@@ -132,6 +132,7 @@ const game = {
          return
       }
 
+      buttonFire.focus()
       remaining.innerText = "Missile Away!"
       playerText.innerText = ""
       enemyText.innerText = ""
