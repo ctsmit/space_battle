@@ -243,12 +243,14 @@ start.addEventListener("click", () => {
    document.querySelector(".bodyContainer").style.background = game.getRandomColor()
    buttonContainer.appendChild(buttonFire)
 
+
    enemyHull.innerText = `HP: ${alienShips[currentAlienShip].hull}`
    enemyFirepower.innerText = `Atk: ${alienShips[currentAlienShip].firepower}`
    enemyAccuracy.innerText = `Acc: ${alienShips[currentAlienShip].accuracy}`
    playerHull.innerText = `HP: 20`
    playerFirepower.innerText = `Atk: 5`
    playerAccuracy.innerText = `Acc: 0.7`
+   document.activeElement.blur()
 })
 
 buttonFire.addEventListener("click", game.startRound)

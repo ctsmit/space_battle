@@ -157,17 +157,20 @@ img {
    opacity: 0;
    z-index: 9000;
 }
-.buttonFire:focus .bottom {
+.buttonFire:focus .bottom,
+.buttonFire:active .bottom {
    opacity: 1;
    left: 100%;
    transition: 1s;
 }
-.buttonFire:focus .top {
+.buttonFire:focus .top,
+.buttonFire:active .top {
    opacity: 1;
    left: -100%;
    transition: 1s 1s;
 }
-.button:focus {
+.button:focus,
+.button:active {
    background: hsl(160, 100%, 15%);
    /* color: black; */
    font-size: 4vw;
